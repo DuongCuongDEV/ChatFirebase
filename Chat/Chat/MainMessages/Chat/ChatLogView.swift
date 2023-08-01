@@ -62,6 +62,9 @@ class ChatLogViewModel: ObservableObject {
     }
     
     func handleSend() {
+        guard !chatText.isEmpty else {
+                return // Nếu chatText rỗng, không gửi tin nhắn và thoát khỏi hàm
+            }
         print(chatText)
         guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else { return }
         
